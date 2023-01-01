@@ -6,35 +6,48 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println( sumOfEvenFibo(90));
+        System.out.println(getlargestPrime(600851475143L));
+
     }
 
-    public static int sumOfEvenFibo(int num) {
-        int sum=0;
-        int a =1;
-        int b=2;
-        int c=0;
-
-       while (c<num) {
-           c=a+b;
-           if (c>num) break;
-           if (c % 2 ==0 ) {
-               System.out.println("c " +c );
-               sum +=c;
-           }
-           a=b;
-           b=c;
-        }
-        return sum+2;
-    }
-
-    public static boolean isDivisible(int num, int[] divisors) {
-        for (int divisor : divisors) {
-            if (num % divisor == 0) {
-                return true;
+    public static long getlargestPrime(long num) {
+        long i=1;
+        long largestPrime=0;
+        while (i< num) {
+            i++;
+            if  (num % i ==0) {
+                if (isPrime(i)) largestPrime=i;
+                num =divideByLargestPower (num,i);
             }
         }
-        return false;
+        return largestPrime;
     }
+
+    public static long divideByLargestPower(long num , long i) {
+        boolean isDivisible=true;
+        while(isDivisible) {
+            num = num /i;
+            isDivisible = (num % i ==0);
+        }
+        return num;
+    }
+
+
+    public static boolean isPrime(long num) {
+        if (num < 2) {
+            return false;
+        }
+        for (long i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
+
 
 }
