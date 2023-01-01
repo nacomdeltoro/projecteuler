@@ -6,17 +6,26 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        int[] divisors = {3, 5};
-        int num=10;
-        System.out.println("Sum of multiples " + Arrays.toString(divisors) + " under "+ num+  " is "+ sumOfDivisors(num, divisors)+ "." );
+        System.out.println( sumOfEvenFibo(90));
     }
 
-    public static int sumOfDivisors(int num, int[]divisors) {
+    public static int sumOfEvenFibo(int num) {
         int sum=0;
-        for (int i=0;i<num;i++) {
-            if (isDivisible(i,divisors)) sum+=i;
+        int a =1;
+        int b=2;
+        int c=0;
+
+       while (c<num) {
+           c=a+b;
+           if (c>num) break;
+           if (c % 2 ==0 ) {
+               System.out.println("c " +c );
+               sum +=c;
+           }
+           a=b;
+           b=c;
         }
-        return sum;
+        return sum+2;
     }
 
     public static boolean isDivisible(int num, int[] divisors) {
