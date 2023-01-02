@@ -13,56 +13,30 @@ class Main {
         org.apache.commons.lang.time.StopWatch stopwatch  = new StopWatch();
         stopwatch.start();
 
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
-        System.out.println(getLargestPalindrone(999L));
+        System.out.println(computeLCM(numbers));
         stopwatch.stop(); // optional
 
         System.out.println("that took: " + stopwatch.getTime() +" ms" ); // formatted string like "12.3 ms"
 
     }
 
-    public static long getLargestPalindrone(long num  ) {
-        long largestPalindrone =0;
-        for (long i=num;i>99;i--) {
-            for (long j=num;j>99;j--) {
-                if (isPalindrone(i*j)) {
-                    if (i*j > largestPalindrone) largestPalindrone = i*j;
-                }
-            }
+    public static int computeLCM(int[] numbers) {
+        int lcm = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            lcm = (lcm * numbers[i]) / computeGCD(lcm, numbers[i]);
         }
-
-        return largestPalindrone;
-
+        return lcm;
     }
 
 
-
-    public static boolean isPalindrone(long num) {
-        return isPalindrome(Long.toString(num));
-    }
-
-    public static boolean isPalindrome(String str)
-    {
-        // Initializing an empty string to store the reverse
-        // of the original str
-        String rev = "";
-
-        // Initializing a new boolean variable for the
-        // answer
-        boolean ans = false;
-
-        for (int i = str.length() - 1; i >= 0; i--) {
-            rev = rev + str.charAt(i);
+    public static int computeGCD(int a, int b) {
+        if (b == 0) {
+            return a;
         }
-
-        // Checking if both the strings are equal
-        if (str.equals(rev)) {
-            ans = true;
-        }
-        return ans;
+        return computeGCD(b, a % b);
     }
-
-
 
 
 
