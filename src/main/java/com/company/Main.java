@@ -48,11 +48,11 @@ class Main {
     }
 
 
-    public static int maxProduct(String x, int numAdjacentDigits) {
-        int maxProduct = 0;
+    public static long maxProduct(String x, int numAdjacentDigits) {
+        long maxProduct = 0;
         int[] maxDigits = new int[numAdjacentDigits];
         for (int i = 0; i < x.length() - numAdjacentDigits + 1; i++) {
-            int product = 1;
+            long product = 1;
             int[] digits = new int[numAdjacentDigits];
             for (int j = 0; j < numAdjacentDigits; j++) {
                 int digit = Character.getNumericValue(x.charAt(i + j));
@@ -65,7 +65,7 @@ class Main {
                 maxDigits = Arrays.copyOf(digits, numAdjacentDigits);
             }
         }
-        System.out.println( maxDigits.toString());
+
         return  maxProduct;
     }
 
