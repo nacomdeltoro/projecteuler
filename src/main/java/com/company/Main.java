@@ -61,11 +61,11 @@ class Main {
             }
             if (product > maxProduct) {
                 maxProduct = product;
-                System.out.println( "digits: " + Arrays.toString(maxDigits));
                 maxDigits = Arrays.copyOf(digits, numAdjacentDigits);
             }
         }
-
+        System.out.println( "digits: " + Arrays.toString(maxDigits));
+        System.out.println("product: " + maxProduct);
         return  maxProduct;
     }
 
